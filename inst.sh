@@ -1,5 +1,7 @@
 #! /bin/bash
 
+homedir=$(pwd)
+
 #users directory 
 #LANG=C xdg-user-dirs-gtk-update
 
@@ -12,6 +14,7 @@ mkdir ~/radare2/
 git clone https://github.com/radare/radare2 
 cd radare2
 sys/install.sh
+cd $homedir
 #ghex
 apt install ghex
 #peda
@@ -42,3 +45,12 @@ apt install socat
 apt install volatility
 #sqlite3
 apt install sqlite3
+#john
+mkdir ~/john/
+cd ~/john/
+wget http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.xz
+xz -dc john-1.8.0-jumbo-1.tar.xz | tar xfv - 
+cd ~/john/john-1.8.0-jumbo-1/src/
+.configure && make
+cd $homedir
+
